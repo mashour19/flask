@@ -4,13 +4,14 @@
 <h1>Account <small> Welcome {{session.username}}</small></h1>
 
 	<h1>User info</h1>
-  <small>Created by {{users.name}} on {{session.create_date}}</small>
+  <small>Created by {{session.username}} on {{session.create_date}}</small>
 	<ul class="list-group">
-    <form action="{{url_for('delete_account', id=session.id)}}" method="post">
+		<tr>
+			<td><a href="dashboard" class="btn btn-primary pull-left">Cancel</a></td>
+    <form action="{{url_for('delete_account', id=session.username)}}" method="post">
       <input type="hidden" name="_method" value="DELETE">
       <input type="submit" value="DELETE" class="btn btn-danger">
-      <input type="submit" value="Cancel" class="btn btn-primary">
-    </form>
-
+		</form>
+	</tr>
 	</ul>
 {% endblock %}

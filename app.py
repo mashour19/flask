@@ -307,19 +307,14 @@ def delete_account(id):
 	cur = mysql.connection.cursor()
 
 	# Delete user
-	result = cur.execute("DELETE FROM users WHERE id = {{session.username}}", [id] )
+	result = cur.execute("DELETE FROM users WHERE id = %s", [id])
 
 	mysql.connection.commit()
 	cur.close()
 
-	if result > 0:
-		flash('Deleted', 'success')
-		session.clear()
-		return render_template('register.html', id=id)
-	else:
-		msg = 'No Account Found'
 
-	return render_template('dashboard.html', msg=msg)
+
+	return render_template('dashboard.html')
 
 
 
