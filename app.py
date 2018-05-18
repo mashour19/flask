@@ -299,13 +299,12 @@ def delete_article(id):
 
 	return redirect(url_for('dashboard'))
 
-
+# I can't delete the account
 # Delete Account
 @app.route('/delete_account/<string:id>', methods=['POST'])
 @is_logged_in
 def delete_account(id):
 	cur = mysql.connection.cursor()
-
 	# Delete user
 	result = cur.execute("DELETE FROM users WHERE id = %s", [id])
 	users = cur.fetchone()
